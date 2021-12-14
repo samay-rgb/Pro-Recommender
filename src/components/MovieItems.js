@@ -56,17 +56,19 @@ export default function MovieItems({ movieitem }) {
 }
 const Container = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-content: flex-start;
-  padding: 20px;
-  width: 20%;
+  width: 15%;
   border: 2px solid black;
-  padding: 5px;
-  margin: 5px;
+  margin: 2px;
   border-radius: 15px;
   background-color: #0b0b0b;
   align-items: center;
   color: whitesmoke;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 const Image = styled.img`
   height: 200px;

@@ -11,7 +11,7 @@ export default function Movies() {
     let datajson = await data.json();
     let m = datajson.results;
     console.log("wejkdsdjklsdffjlhds");
-    if (m) setMovie(m.slice(0, 8));
+    if (m) setMovie(m.slice(0, 12));
   };
 
   useEffect(() => {
@@ -19,17 +19,20 @@ export default function Movies() {
     // eslint-disable-next-line
   }, []);
   return (
-    <Container>
-      {movie.map((item, idx) => {
-        return <MovieItems movieitem={item} key={idx} />;
-      })}
-    </Container>
+    <>
+      <H>Explore Trending movies/shows</H>
+      <Container>
+        {movie.map((item, idx) => {
+          return <MovieItems movieitem={item} key={idx} />;
+        })}
+      </Container>
+    </>
   );
 }
 
 const Container = styled.div`
   height: 80vh;
-  margin-top: 100px;
+  margin-top: 25px;
   display: flex;
   flex-wrap: wrap;
   background-color: #0f0d2c;
@@ -42,3 +45,7 @@ const Container = styled.div`
 //   align-items: center;
 //   border: 1px solid black;
 // `;
+const H = styled.h1`
+  color: white;
+  margin-top: 5px;
+`;

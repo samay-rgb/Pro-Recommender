@@ -50,11 +50,11 @@ const Icon = styled.img`
 `;
 // h-10 bg-gray-200 my-2 p-2 rounded-4 outline-none border-none
 const Button = styled.button`
-  height: 59px;
+  height: 40px;
   margin: 5px;
   width: 70px;
   border: none;
-  border-radius: 50%;
+  border-radius: 20%;
   background-color: black;
   cursor: pointer;
 `;
