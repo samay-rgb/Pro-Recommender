@@ -6,7 +6,8 @@ import money from "./money.jpg";
 import star from "./star.jpg";
 export default function Carousel() {
   return (
-    <div>
+      <Container>
+            <div>
       <div
         id="carouselExampleCaptions"
         className="carousel slide"
@@ -83,8 +84,13 @@ export default function Carousel() {
         </button>
       </div>
     </div>
+      </Container>
   );
 }
+const Container = styled.div`
+  width: 95vw;
+  margin:0 2.5vw;
+`;
 const Img = styled.img`
-  height: 650px;
+  
 `;

@@ -45,31 +45,19 @@ export default function MovieItems({ movieitem }) {
   //     media_type: "tv",
   //   };
   return (
-    <Container>
-      <Image src={`https://image.tmdb.org/t/p/w500/${poster}`} alt="" />
-      <div>
-        <p>{title}</p>
-        <p>Rating: {rating}</p>
+    <div className="movie-item">
+      <Image src={`https://image.tmdb.org/t/p/w500/${poster}`} alt=""/>
+      <div className="overlay" onClick={()=>{console.log(movieitem.id);}}>
+        <div className="text"> 
+              {title}
+          </div>
       </div>
-    </Container>
+    </div>
   );
 }
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-content: flex-start;
-  width: 15%;
-  border: 2px solid black;
-  margin: 2px;
-  border-radius: 15px;
-  background-color: #0b0b0b;
-  align-items: center;
-  color: whitesmoke;
-  cursor: pointer;
-  &:hover {
-    transform: scale(1.1);
-  }
-`;
+
 const Image = styled.img`
-  height: 200px;
+  display:block;
+  height:300px;
+  border-radius:15px;
 `;

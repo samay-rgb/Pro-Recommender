@@ -11,7 +11,7 @@ export default function Movies() {
     let datajson = await data.json();
     let m = datajson.results;
     console.log("wejkdsdjklsdffjlhds");
-    if (m) setMovie(m.slice(0, 12));
+    if (m) setMovie(m.slice(0, 10));
   };
 
   useEffect(() => {
@@ -23,7 +23,7 @@ export default function Movies() {
       <H>Explore Trending movies/shows</H>
       <Container>
         {movie.map((item, idx) => {
-          return <MovieItems movieitem={item} key={idx} />;
+          return <MovieItems movieitem={item} key={idx}/>;
         })}
       </Container>
     </>
@@ -32,11 +32,10 @@ export default function Movies() {
 
 const Container = styled.div`
   height: 80vh;
-  margin-top: 25px;
+  margin-top: 3em;
   display: flex;
   flex-wrap: wrap;
-  background-color: #0f0d2c;
-  justify-content: space-between;
+  background-color: #14213d;
 `;
 // const Item = styled.div`
 //   width: 20%;
@@ -47,5 +46,6 @@ const Container = styled.div`
 // `;
 const H = styled.h1`
   color: white;
-  margin-top: 5px;
+  margin-top: 2%;
+  margin-left: 2.2%;
 `;

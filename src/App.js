@@ -5,13 +5,14 @@ import Carousel from "./components/Carousel";
 // import MovieItems from "./components/MovieItems";
 import Movies from "./components/Movies";
 import Navbar from "./components/Navbar";
-
+import MovieDetails from './components/MovieDetails'
 function App() {
   return (
     <div>
       <Navbar />
       <Carousel />
       <Movies />
+      {/* <MovieDetails/> */}
       {/* <MovieItems /> */}
       {/* <Homepage /> */}
     </div>
