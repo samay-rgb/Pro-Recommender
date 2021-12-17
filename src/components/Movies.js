@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import MovieItems from "./MovieItems";
-
+import {Link} from "react-router-dom";
 export default function Movies() {
   const [movie, setMovie] = useState([]);
   const getMovies = async () => {
@@ -11,7 +11,7 @@ export default function Movies() {
     let datajson = await data.json();
     let m = datajson.results;
     console.log("wejkdsdjklsdffjlhds");
-    if (m) setMovie(m.slice(0, 10));
+    if (m) setMovie(m.slice(0, 15));
   };
 
   useEffect(() => {
@@ -23,7 +23,12 @@ export default function Movies() {
       <H>Explore Trending movies/shows</H>
       <Container>
         {movie.map((item, idx) => {
-          return <MovieItems movieitem={item} key={idx}/>;
+          if(item.media_type==='movie')
+          {
+            return (
+            <MovieItems movieitem={item} key={idx} />
+            );
+          }
         })}
       </Container>
     </>

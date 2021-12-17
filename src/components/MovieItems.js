@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import {Link} from "react-router-dom";
 export default function MovieItems({ movieitem }) {
   console.log(movieitem);
   let rating = 5.5;
@@ -46,13 +47,16 @@ export default function MovieItems({ movieitem }) {
   //   };
   return (
     <div className="movie-item">
+        <Link to={`/movies/${movieitem.id}`} params={{ id: movieitem.id,type:movieitem.media_type }}>
       <Image src={`https://image.tmdb.org/t/p/w500/${poster}`} alt=""/>
       <div className="overlay" onClick={()=>{console.log(movieitem.id);}}>
         <div className="text"> 
               {title}
           </div>
       </div>
+        </Link>
     </div>
+    
   );
 }
 
