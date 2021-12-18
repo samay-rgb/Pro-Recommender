@@ -1,23 +1,24 @@
 import React,{ useState, useEffect } from 'react'
 import styled from "styled-components";
 import CastMember from './CastMember';
+import {useParams} from 'react-router-dom';
 export default function MovieDetails() {
     const [cast,setCast] = useState([]);
     const [movie,setMovie] = useState([]);
+    let param = useParams();
     const getCast = async() =>
     {
-        let data1 = await fetch ("https://api.themoviedb.org/3/find/tt0120681?api_key=bc9494ce80d96b4eefaffdeea5679261&language=en-US&external_source=imdb_id");
+        let data1 = await fetch (`https://api.themoviedb.org/3/movie/${param.id}?api_key=bc9494ce80d96b4eefaffdeea5679261&language=en-US`);
         let data = await fetch(
-            "https://api.themoviedb.org/3/movie/tt0120467/credits?api_key=bc9494ce80d96b4eefaffdeea5679261&language=en-US"
+            `https://api.themoviedb.org/3/movie/${param.id}/credits?api_key=bc9494ce80d96b4eefaffdeea5679261&language=en-US`
           );
           let datajson = await data.json();
           let datajson1 = await data1.json();
           let m = datajson.cast;
-          let m1 = datajson1.movie_results[0];
+          let m1 = datajson1;
           if (m) setCast(m.slice(0, 10));
           setMovie(m1);
-          console.log(movie);
-          console.log(cast);
+          console.log(param.id);
     };
     useEffect(() => {
         getCast();
@@ -67,7 +68,7 @@ const CastContainer = styled.div`
   height: auto;
   padding:1em;
   display: flex;
-  flex-wrap: wrap;
+  overflow-x:scroll;
   color:white;
 `;
 const H = styled.h1`
