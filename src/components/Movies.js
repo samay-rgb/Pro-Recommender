@@ -11,7 +11,7 @@ export default function Movies() {
     let datajson = await data.json();
     let m = datajson.results;
     // console.log("wejkdsdjklsdffjlhds");
-    if (m) setMovie(m.slice(0, 15));
+    if (m) setMovie(m);
   };
 
   useEffect(() => {
@@ -37,7 +37,8 @@ const Container = styled.div`
   margin-top: 3em;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  margin: auto;
+  margin-left: 45px;
   background-color: #14213d;
 `;
 // const Item = styled.div`
