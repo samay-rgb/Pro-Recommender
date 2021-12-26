@@ -16,13 +16,6 @@
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
 
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -55,11 +48,8 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
@@ -167,13 +157,13 @@ Don't forget to give the project a star! Thanks again!
 
 <!-- LICENSE -->
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 <!-- CONTACT -->
 
 ## Contact
 
-Samay Sagar - [@Rahuldba99](https://twitter.com/https://twitter.com/Rahuldba99) - rahuldba99@gmail.com
+Saksham Yadav- [Github](https://github.com/Saksham-1508) [LinkedIn](https://www.linkedin.com/in/saksham-yadav-5604b0200/)- 20bcs191@iiitdmj.ac.in
+
+Samay Sagar - [Twitter](https://twitter.com/https://twitter.com/Rahuldba99) [LinkedIn](https://www.linkedin.com/in/samay-sagar-a28847200/)- rahuldba99@gmail.com
 
 Project Link: [https://github.com/samay-rgb/Pro-Recommender](https://github.com/samay-rgb/Pro-Recommender)
 
