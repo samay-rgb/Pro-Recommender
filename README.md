@@ -115,6 +115,16 @@ This is an example of how to list things you need to use the software and how to
 Browse over 16000 movies for recommendations using the subtle user interface . You can simply search for a movie or explore some trending movies as well.
 Currently we have only added English movies to our data. Other langauges movies will be added soon.
 
+- Open terminal in the cloned repo directory and run the following command
+  ```sh
+  npm start
+  ```
+- In another terminal run the following commands
+  ```sh
+  cd backend
+  python main.py
+  ```
+
 ![Trending](ss2.png)
 
 <br/>
