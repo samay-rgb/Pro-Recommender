@@ -11,7 +11,7 @@ export default function Movies() {
     let datajson = await data.json();
     let m = datajson.results;
     // console.log("wejkdsdjklsdffjlhds");
-    if (m) setMovie(m);
+    if (m) setMovie(m.slice(0, 15));
   };
 
   useEffect(() => {
@@ -25,7 +25,7 @@ export default function Movies() {
         {movie.map((item, idx) => {
           if (item.media_type === "movie") {
             return <MovieItems movieitem={item} key={idx} />;
-          }
+          } else return "";
         })}
       </Container>
     </>
@@ -38,7 +38,8 @@ const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin: auto;
-  margin-left: 45px;
+  margin-left: 5%;
+  justify-content: flex-start;
   background-color: #14213d;
 `;
 // const Item = styled.div`

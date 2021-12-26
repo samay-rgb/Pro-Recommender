@@ -6,7 +6,7 @@ body {
   display: flex;
   flex-direction: column;
   align-content: flex-start;
-  margin: 1.2%;
+  margin: 2.25%;
   align-items: center;
   color: whitesmoke;
   cursor: pointer;
@@ -54,4 +54,18 @@ body {
   align-items: center;
   color: whitesmoke;
   cursor: pointer;
+}
+.MuiAutocomplete-option {
+  background-color: #14213d;
+  color: whitesmoke;
+}
+.MuiAutocomplete-listbox {
+  background-color: #14213d;
+  opacity: 0.9;
+}
+input {
+  color: aliceblue;
+}
+.MuiTextField {
+  color: orange;
 }

@@ -2,58 +2,119 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import CastMember from "./CastMember";
 import { useParams } from "react-router-dom";
-import Recommendations from "./Recommendations";
+import MovieItems from "./MovieItems";
+import ContentLoader from "react-content-loader";
 export default function MovieDetails() {
+  const [loading, setLoading] = useState(true);
   const [cast, setCast] = useState([]);
   const [movie, setMovie] = useState([]);
-  let param = useParams();
-  const getCast = async () => {
-    let data1 = await fetch(
+  const [movies, setMovies] = useState([]);
+  const param = useParams();
+  const MyLoader = (props) => (
+    <ContentLoader
+      width={1200}
+      height={1200}
+      viewBox="0 0 1200 1200"
+      backgroundColor="#507dbc"
+      foregroundColor="#a1c6ea"
+      {...props}
+    >
+      <rect x="25" y="42" rx="16" ry="16" width="300" height="400" />
+      <rect x="450" y="113" rx="3" ry="3" width="500" height="17" />
+      <rect x="450" y="150" rx="3" ry="3" width="478" height="16" />
+      <rect x="450" y="200" rx="3" ry="3" width="178" height="16" />
+      <rect x="450" y="250" rx="3" ry="3" width="102" height="17" />
+      <rect x="450" y="300" rx="3" ry="3" width="178" height="16" />
+      <rect x="450" y="42" rx="3" ry="3" width="631" height="50" />
+      <rect x="25" y="500" rx="3" ry="3" width="350" height="50" />
+      <rect x="25" y="600" rx="16" ry="16" width="200" height="300" />
+      <rect x="355" y="600" rx="16" ry="16" width="200" height="300" />
+      <rect x="655" y="600" rx="16" ry="16" width="200" height="300" />
+      <rect x="955" y="600" rx="16" ry="16" width="200" height="300" />
+
+      {/* <rect x="555" y="600" rx="16" ry="16" width="200" height="300" /> */}
+    </ContentLoader>
+  );
+  const getDetails = async () => {
+    const data1 = await fetch(
       `https://api.themoviedb.org/3/movie/${param.id}?api_key=bc9494ce80d96b4eefaffdeea5679261&language=en-US`
     );
-    let data = await fetch(
+    const data = await fetch(
       `https://api.themoviedb.org/3/movie/${param.id}/credits?api_key=bc9494ce80d96b4eefaffdeea5679261&language=en-US`
     );
-    let datajson = await data.json();
-    let datajson1 = await data1.json();
-    let m = datajson.cast;
-    let m1 = datajson1;
+
+    const datajson = await data.json();
+    const datajson1 = await data1.json();
+    let recom = await fetch(
+      "http://127.0.0.1:5000/similarity/" + datajson1.imdb_id
+    );
+    let recomjson = await recom.json();
+    let temp = [];
+    for (let i = 0; i < recomjson.length; i++) {
+      temp.push(recomjson[i].movie_details);
+    }
+    setMovies(temp);
+    const m = datajson.cast;
+    const m1 = datajson1;
     if (m) setCast(m.slice(0, 10));
     setMovie(m1);
-    console.log(param.id);
   };
   useEffect(() => {
-    getCast();
+    setLoading(true);
+    getDetails().then(() => setLoading(false));
     // eslint-disable-next-line
-  }, []);
-  return (
-    <div>
-      <Container>
-        <img
-          src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-          alt=""
-        />
-        <div className="over-view">
-          <h2>{movie.original_title}</h2>
+  }, [param.id]);
 
-          <p>{movie.adult ? "18+" : "U/A"}</p>
-          <h3>Overview:</h3>
-          <p>{movie.overview}</p>
-          <p>Release : {movie.release_date}</p>
-          <p>Rating : {movie.vote_average}/10</p>
-        </div>
-      </Container>
-      <H>Cast</H>
-      <CastContainer>
-        {cast.map((member, idx) => {
-          if (member.profile_path) {
-            return <CastMember member={member} key={idx} />;
-          }
-        })}
-      </CastContainer>
-      <Recommendations />
-    </div>
-  );
+  if (!loading)
+    return (
+      <div>
+        <Container>
+          <img
+            src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+            alt=""
+          />
+          <div className="over-view">
+            <h2>{movie.original_title}</h2>
+
+            <p>{movie.adult ? "18+" : "U/A"}</p>
+            <h3>Overview:</h3>
+            <p>{movie.overview}</p>
+            <p>
+              <b>Release :</b> {movie.release_date}
+            </p>
+            <p>
+              <b>Rating :</b> {movie.vote_average}/10
+            </p>
+            <p>
+              <b>Duration :</b> {Math.floor(movie.runtime / 60)}h{" "}
+              {movie.runtime % 60}m
+            </p>
+            {/* <p><b>Genres : </b>{(movie.genres).map((gen)=>{return gen.name+" | "})}</p> */}
+          </div>
+        </Container>
+        <H>Cast</H>
+        <CastContainer>
+          {cast.map((member, idx) => {
+            if (member.profile_path) {
+              return <CastMember member={member} key={idx} />;
+            } else return "";
+          })}
+        </CastContainer>
+
+        <H>Recommended Movies</H>
+        <MContainer>
+          {movies.map((item, idx) => {
+            return <MovieItems movieitem={item} key={idx} />;
+          })}
+        </MContainer>
+      </div>
+    );
+  else
+    return (
+      <>
+        <MyLoader />
+      </>
+    );
 }
 const Container = styled.div`
   display: flex;
@@ -65,6 +126,16 @@ const Container = styled.div`
     border-radius: 10px;
   }
   backdrop-filter: blur(10px);
+`;
+const MContainer = styled.div`
+  height: 80vh;
+  margin-top: 3em;
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  margin-left: 5%;
+  justify-content: flex-start;
+  background-color: #14213d;
 `;
 const CastContainer = styled.div`
   width: 100%;
