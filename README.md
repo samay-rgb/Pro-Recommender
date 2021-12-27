@@ -49,7 +49,6 @@
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
   </ol>
 </details>
 
@@ -83,8 +82,6 @@ Install the following packages and dependencies to get started
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-
 - npm
   ```sh
   npm install npm@latest -g
@@ -95,7 +92,7 @@ This is an example of how to list things you need to use the software and how to
 1. Get a free API Key at [https://www.themoviedb.org/](https://www.themoviedb.org/)
 2. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/samay-rgb/Pro-Recommender.git
    ```
 3. Install NPM packages
    ```sh
@@ -103,7 +100,7 @@ This is an example of how to list things you need to use the software and how to
    ```
 4. Install following python libraires
    ```sh
-   pip install sklearn pandas numpy sklearn flask_cors
+   pip install sklearn pandas numpy sklearn flask flask_cors
    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -144,8 +141,6 @@ Currently we have only added English movies to our data. Other langauges movies 
 <!-- ROADMAP -->
 
 See the [open issues](https://github.com/samay-rgb/Pro-Recommender/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- CONTRIBUTING -->
 
