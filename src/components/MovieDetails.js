@@ -4,6 +4,8 @@ import CastMember from "./CastMember";
 import { useParams } from "react-router-dom";
 import MovieItems from "./MovieItems";
 import ContentLoader from "react-content-loader";
+import { api_key } from "./Creds";
+
 export default function MovieDetails() {
   const [loading, setLoading] = useState(true);
   const [cast, setCast] = useState([]);
@@ -28,19 +30,19 @@ export default function MovieDetails() {
       <rect x="450" y="42" rx="3" ry="3" width="631" height="50" />
       <rect x="25" y="500" rx="3" ry="3" width="350" height="50" />
       <rect x="25" y="600" rx="16" ry="16" width="200" height="300" />
-      <rect x="355" y="600" rx="16" ry="16" width="200" height="300" />
-      <rect x="655" y="600" rx="16" ry="16" width="200" height="300" />
-      <rect x="955" y="600" rx="16" ry="16" width="200" height="300" />
+      <rect x="325" y="600" rx="16" ry="16" width="200" height="300" />
+      <rect x="625" y="600" rx="16" ry="16" width="200" height="300" />
+      <rect x="925" y="600" rx="16" ry="16" width="200" height="300" />
 
       {/* <rect x="555" y="600" rx="16" ry="16" width="200" height="300" /> */}
     </ContentLoader>
   );
   const getDetails = async () => {
     const data1 = await fetch(
-      `https://api.themoviedb.org/3/movie/${param.id}?api_key=bc9494ce80d96b4eefaffdeea5679261&language=en-US`
+      `https://api.themoviedb.org/3/movie/${param.id}?api_key=${api_key}&language=en-US`
     );
     const data = await fetch(
-      `https://api.themoviedb.org/3/movie/${param.id}/credits?api_key=bc9494ce80d96b4eefaffdeea5679261&language=en-US`
+      `https://api.themoviedb.org/3/movie/${param.id}/credits?api_key=${api_key}&language=en-US`
     );
 
     const datajson = await data.json();

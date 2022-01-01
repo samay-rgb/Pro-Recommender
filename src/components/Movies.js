@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import MovieItems from "./MovieItems";
+import { api_key } from "./Creds";
+
 // import { Link } from "react-router-dom";
 export default function Movies() {
   const [movie, setMovie] = useState([]);
   const getMovies = async () => {
     let data = await fetch(
-      "https://api.themoviedb.org/3/trending/all/day?api_key=bc9494ce80d96b4eefaffdeea5679261"
+      `https://api.themoviedb.org/3/trending/all/day?api_key=${api_key}`
     );
     let datajson = await data.json();
     let m = datajson.results;

@@ -89,7 +89,7 @@ Install the following packages and dependencies to get started
 
 ### Installation
 
-1. Get a free API Key at [https://www.themoviedb.org/](https://www.themoviedb.org/)
+1. Get a free API Key at [https://www.themoviedb.org/](https://www.themoviedb.org/) and enter your apikey in tmdbCreds.py in the backend folder and Creds.js in /src/components/Creds.js
 2. Clone the repo
    ```sh
    git clone https://github.com/samay-rgb/Pro-Recommender.git

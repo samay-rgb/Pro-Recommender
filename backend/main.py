@@ -2,12 +2,15 @@ from typing import Mapping
 from flask import Flask, jsonify
 from flask_cors import CORS
 import pandas as pd
+from pandas.core.indexes import api
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import difflib
 import requests
 import json
+import tmdbCreds
 df = pd.read_csv('final_movies.csv')
+api_key = tmdbCreds.API_KEY
 app = Flask(__name__)
 CORS(app)
 
@@ -38,7 +41,7 @@ def get_ids(moviename):
     imdb_id = (df.loc[df['original_title'] == moviename,
                ['imdb_title_id']]).values[0][0]
     response = requests.get('https://api.themoviedb.org/3/find/'+imdb_id +
-                            '?api_key=bc9494ce80d96b4eefaffdeea5679261&language=en-US&external_source=imdb_id')
+                            '?api_key='+api_key+'&language=en-US&external_source=imdb_id')
     tmdbid = -1
     res = response.json()
     if(len(res['movie_results'])):
@@ -69,13 +72,13 @@ def get_movie_similarity(imdb_id):
         idx = sorted_score[i][0]
         # print(idx)de
         response = requests.get('https://api.themoviedb.org/3/find/'+df['imdb_title_id'][idx] +
-                                '?api_key=bc9494ce80d96b4eefaffdeea5679261&language=en-US&external_source=imdb_id')
+                                '?api_key='+api_key+'&language=en-US&external_source=imdb_id')
         res = response.json()
         tmdbid = 0
         if(len(res['movie_results'])):
             tmdbid = str(res['movie_results'][0]['id'])
             response2 = requests.get('https://api.themoviedb.org/3/movie/' +
-                                     tmdbid+'?api_key=bc9494ce80d96b4eefaffdeea5679261&language=en-US')
+                                     tmdbid+'?api_key='+api_key)
             res2 = response2.json()
         else:
             tmdbid = -1
