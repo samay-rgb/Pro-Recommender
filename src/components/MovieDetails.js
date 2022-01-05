@@ -48,7 +48,7 @@ export default function MovieDetails() {
     const datajson = await data.json();
     const datajson1 = await data1.json();
     let recom = await fetch(
-      "http://127.0.0.1:5000/similarity/" + datajson1.imdb_id
+      "https://movie-recom-api.herokuapp.com/" + datajson1.imdb_id
     );
     let recomjson = await recom.json();
     let temp = [];

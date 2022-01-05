@@ -10,7 +10,7 @@ function App() {
   // const [progress, setProgress] = useState(0);
   const [options, setOptions] = useState([]);
   const getMoviesList = async () => {
-    let data = await fetch("http://127.0.0.1:5000/movielist");
+    let data = await fetch("https://movie-recom-api.herokuapp.com/movielist");
     let datajson = await data.json();
     setOptions(datajson);
     console.log(data);
